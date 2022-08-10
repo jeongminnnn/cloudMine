@@ -19,15 +19,25 @@
         <header>
             <h1 class="blind">logo</h1>
             <div class="inner">
-                <p class="logo"><img src="./img/logo.svg" alt="logo"/></p>
+                <p class="logo">
+                    <img class="desktop" src="./img/logo.svg" alt="logo"/>
+                    <img class="mob" src="./img/logo.svg" alt="logo"/>
+                </p>
                 <div class="gnb">
-                    <input class="mysql_user" type="text" value="325" readonly>
+                    <input class="mysql_user" type="text" value="325" readonly/>
                     <nav>
-                        <ul>
+                        <ul class="desktop">
                             <li><a href="#">About</a></li>
                             <li><a href="#">About</a></li>
                             <li><a href="#">About</a></li>
                         </ul>
+                        <div class="mob">
+                            <svg viewBox="0 0 100 100" onclick="this.classList.toggle('active')">
+                                <path class="top" d="m 30,33 h 40 c 0,0 9.044436,-0.654587 9.044436,-8.508902 0,-7.854315 -8.024349,-11.958003 -14.89975,-10.85914 -6.875401,1.098863 -13.637059,4.171617 -13.637059,16.368042 v 40" />
+                                <path class="middle" d="m 30,50 h 40" />
+                                <path class="bottom" d="m 30,67 h 40 c 12.796276,0 15.357889,-11.717785 15.357889,-26.851538 0,-15.133752 -4.786586,-27.274118 -16.667516,-27.274118 -11.88093,0 -18.499247,6.994427 -18.435284,17.125656 l 0.252538,40" />
+                            </svg>
+                        </div>
                     </nav>
                 </div>
             </div>
@@ -43,15 +53,16 @@
                         </h2>
                         <div class="desc">
                             Polkadot unites and secures a growing ecosystem of specialized blockchains called parachains. Apps and services on Polkadot can securely communicate across chains, forming the basis for a truly interoperable decentralized web.
-                            <p class="btnArea">
-                                <a href="#" class="main-btn">Learn More</a>
-                                <a href="#" class="main-btn">Learn More</a>
-                            </p>
+                            
                         </div>
                     </div>
                     <div class="visual-img">
                         <img src="./img/visual_img.png" alt="">
                     </div>
+                    <p class="btnArea">
+                        <a href="#" class="main-btn">Learn More</a>
+                        <a href="#" class="main-btn">Learn More</a>
+                    </p>
                 </div>
             </section>
 
@@ -315,7 +326,6 @@
                             <a href="#"><img src="./img/footer_sns0.png" alt=""></a>
                             <a href="#"><img src="./img/footer_sns0.png" alt=""></a>
                             <a href="#"><img src="./img/footer_sns0.png" alt=""></a> 
-                            <a href="#"><img src="./img/footer_sns0.png" alt=""></a> 
                         </p>
                         <p class="btnWrap">
                             <b>
@@ -330,9 +340,9 @@
                     <dl class="copy">
                         <dt>&copy;2022</dt> 
                         <dd><a href="#">Web3 Foundation</a></dd>
-                        <dd><a href="#">Web3 Foundation</a></dd>
-                        <dd><a href="#">Web3 Foundation</a></dd>
-                        <dd><a href="#">Web3 Foundation</a></dd>
+                        <dd><a href="#">Privacy</a></dd>
+                        <dd><a href="#">Privacy</a></dd>
+                        <dd><a href="#">Privacy</a></dd>
                     </dl>
                 </div>
             </div>

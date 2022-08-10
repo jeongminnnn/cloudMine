@@ -749,8 +749,6 @@ $breakpoint-tablet: 849px;
 
 @include tablet-laptop {
     body {
-        background: #b7b8bb;
-
         .desktop {
             display: none !important;
         }

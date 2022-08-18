@@ -6,6 +6,7 @@ $color--point-hover: #fff;
 $color--bg: #172026;
 
 $fonts--main: 'Work Sans', sans-serif;
+$height--header: 80px;
 
 // COMMON
 body {
@@ -88,27 +89,35 @@ body {
         &:hover::after {
             bottom: -2px;
         }
-    } 
+    }
+    &.scrNone {
+        overflow: hidden;
+        touch-action: none;
+    }
 }
 
 // HEADER
 header {
+    height: $height--header;
     font-size: 20px;
     position: sticky;
     top: 0;
     background-color: #fff;
     z-index: 10;
     .inner {
+        height: 100%;
         position: relative ;
-        padding: 25px 0;
         display: flex;
         align-items: center;
     }
 
     // INDIV
     .logo {
+        a {
+            display: block;
+        }
         img {
-            width: 180px;
+            height: 60px;
         }
     }
     .gnb {
@@ -128,36 +137,81 @@ header {
             font-size: 1.2em;
         }
         nav {
-            li {
-                display: inline-block;
-                a {
-                    letter-spacing: -0.04em;
-                    position: relative;
-                    padding: 0 1em;
-                    &::after {
-                        content:'';
-                        position: absolute;
-                        top: -10%;
-                        width: 4px;
-                        height: 4px;
-                        background-color: $color--point;
-                        border-radius: 50%;
-                        opacity: 0;
-                    }
-                    &:hover::after {
-                        animation: headerGnb .3s ease-in-out 1;
-                    }
-                    @keyframes headerGnb {
-                        0%{
-                            opacity: .5;
-                            left: 1.5em;
-                        }
-                        70%{
-                            opacity: 1;
-                        }
-                        100%{
+            .gnb-inner {
+                li {
+                    display: inline-block;
+                    a {
+                        letter-spacing: -0.04em;
+                        position: relative;
+                        padding: 0 1em;
+                        &::after {
+                            content:'';
+                            position: absolute;
+                            top: -10%;
+                            width: 4px;
+                            height: 4px;
+                            background-color: $color--point;
+                            border-radius: 50%;
                             opacity: 0;
-                            left: calc(100% - 1.5em);
+                        }
+                        &:hover::after {
+                            animation: headerGnb .3s ease-in-out 1;
+                        }
+                        @keyframes headerGnb {
+                            0%{
+                                opacity: .5;
+                                left: 1.5em;
+                            }
+                            70%{
+                                opacity: 1;
+                            }
+                            100%{
+                                opacity: 0;
+                                left: calc(100% - 1.5em);
+                            }
+                        }
+                    }
+                }
+            }
+            .mob {
+                display: flex;
+                svg {
+                    position: relative;
+                    z-index: 1;
+                }
+                .mobGnb {
+                    position: fixed;
+                    left: 100vw;
+                    top: $height--header;
+                    width: 100vw;
+                    height: calc(100vh - $height--header);
+                    background-color: #fff;
+                    display: flex;
+                    justify-content: center;
+                    transition: left 1s, opacity .4s;
+                    opacity: 0;
+                    ul {
+                        width: 70vw;
+                        height: 100%;
+                        overflow-y: auto;
+                        box-sizing: border-box;
+                        a {
+                            display: inline-block;
+                            color: #e6007a;
+                            font-size: 15vw;
+                            font-weight: 900;
+                            transition: .6s;
+                            &:hover, &:focus {
+                                
+                                transform: translateX(.3rem);
+                            }
+                        }
+                        
+                    }
+                    &.active {
+                        left: 0;
+                        opacity: 1;
+                        ul {
                         }
                     }
                 }
@@ -519,8 +573,7 @@ footer {
         display: flex;
         align-items: center; 
         .logo img {
-            width: 145px;
-            padding-right: 3em;
+            width: 70px;
         }
         .copy {
             display: flex;  
@@ -603,37 +656,36 @@ $breakpoint-tablet: 849px;
         }
     }
     header {
-        .logo {
-            width: 40px;
-            overflow: hidden;
-        }
-        nav {
-            svg {
-                width: 50px;
-                cursor: pointer;
-                -webkit-tap-highlight-color: transparent; 
-                transition: transform .4s;
-                user-select: none;
-                &.active {
-                    transform: rotate(45deg); 
-                    .top {
-                        stroke-dashoffset: -98px;
+        .gnb {
+            height: 50px;
+            nav .mob {
+                svg {
+                    width: 50px;
+                    cursor: pointer;
+                    -webkit-tap-highlight-color: transparent; 
+                    transition: transform .4s;
+                    user-select: none;
+                    &.active {
+                        transform: rotate(45deg); 
+                        .top {
+                            stroke-dashoffset: -98px;
+                        }
+                        .bottom {
+                            stroke-dashoffset: -138px;
+                        }
                     }
-                    .bottom {
-                        stroke-dashoffset: -138px;
-                    }
-                }
-                path {
-                    fill: none;
-                    transition: stroke-dasharray .4s, stroke-dashoffset .4s;
-                    stroke: $color--point;
-                    stroke-width: 5.5;
-                    stroke-linecap: round;
-                    &.top {
-                        stroke-dasharray: 40 139;
-                    }
-                    &.bottom {
-                        stroke-dasharray: 40 180;
+                    path {
+                        fill: none;
+                        transition: stroke-dasharray .4s, stroke-dashoffset .4s;
+                        stroke: $color--point;
+                        stroke-width: 5.5;
+                        stroke-linecap: round;
+                        &.top {
+                            stroke-dasharray: 40 139;
+                        }
+                        &.bottom {
+                            stroke-dasharray: 40 180;
+                        }
                     }
                 }
             }
@@ -738,11 +790,9 @@ $breakpoint-tablet: 849px;
             }
         }
         .footer-btm {
-            display: block;
             .copy {
                 font-size: 12px;
                 flex-wrap: wrap;
-                padding-top: 2em;
                 dd {
                     padding-bottom: .5em;
                 }
@@ -783,37 +833,36 @@ $breakpoint-tablet: 849px;
     }
 
     header {
-        .logo {
-            width: 40px;
-            overflow: hidden;
-        }
-        nav {
-            svg {
-                width: 50px;
-                cursor: pointer;
-                -webkit-tap-highlight-color: transparent; 
-                transition: transform .4s;
-                user-select: none;
-                &.active {
-                    transform: rotate(45deg); 
-                    .top {
-                        stroke-dashoffset: -98px;
+        .gnb {
+            height: 50px;
+            nav .mob {
+                svg {
+                    width: 50px;
+                    cursor: pointer;
+                    -webkit-tap-highlight-color: transparent; 
+                    transition: transform .4s;
+                    user-select: none;
+                    &.active {
+                        transform: rotate(45deg); 
+                        .top {
+                            stroke-dashoffset: -98px;
+                        }
+                        .bottom {
+                            stroke-dashoffset: -138px;
+                        }
                     }
-                    .bottom {
-                        stroke-dashoffset: -138px;
-                    }
-                }
-                path {
-                    fill: none;
-                    transition: stroke-dasharray .4s, stroke-dashoffset .4s;
-                    stroke: $color--point;
-                    stroke-width: 5.5;
-                    stroke-linecap: round;
-                    &.top {
-                        stroke-dasharray: 40 139;
-                    }
-                    &.bottom {
-                        stroke-dasharray: 40 180;
+                    path {
+                        fill: none;
+                        transition: stroke-dasharray .4s, stroke-dashoffset .4s;
+                        stroke: $color--point;
+                        stroke-width: 5.5;
+                        stroke-linecap: round;
+                        &.top {
+                            stroke-dasharray: 40 139;
+                        }
+                        &.bottom {
+                            stroke-dasharray: 40 180;
+                        }
                     }
                 }
             }

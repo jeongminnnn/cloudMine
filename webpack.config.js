@@ -3,15 +3,25 @@ const HtmlPlugin = require('html-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = {
-    entry: './js/main.js',
+    entry: {
+        index: './js/index.js',
+        login: './js/login.js',
+    },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'main.js',
+        filename: '[name]_module.js',
         clean: true
     },
     plugins: [
         new HtmlPlugin({
-            template: './index.html'
+            filename: 'index.html',
+            template: './index.html',
+            chunks: ['main']
+        }),
+        new HtmlPlugin({
+            filename: 'login.html',
+            template: './src/login.html',
+            chunks: ['loginEntry']
         }),
         new CopyPlugin({
             patterns: [

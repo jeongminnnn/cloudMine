@@ -1,0 +1,36 @@
+@import "./reset.css";
+@import "./common.scss";
+
+body {
+    overflow: hidden;
+    main {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    fieldset {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .inputWrap {
+        display: flex;
+        justify-content: space-around;
+        height: fit-content;
+        padding-bottom: 5vh;
+    }
+    input {
+        max-width: 15%;
+        width: 10%;
+        font-size: 2rem;
+        border: none;
+        border-bottom: 1px solid #000;
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    }
+}

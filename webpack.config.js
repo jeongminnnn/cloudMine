@@ -6,6 +6,7 @@ module.exports = {
     entry: {
         index: './js/index.js',
         login: './js/login.js',
+        random: './js/random.js',
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -22,6 +23,11 @@ module.exports = {
             filename: 'login.html',
             template: './src/login.html',
             chunks: ['loginEntry']
+        }),
+        new HtmlPlugin({
+            filename: 'random.html',
+            template: './src/random.html',
+            chunks: ['randomEntry']
         }),
         new CopyPlugin({
             patterns: [

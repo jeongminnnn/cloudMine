@@ -3,7 +3,7 @@ window.addEventListener("DOMContentLoaded", function() {
     if(document.querySelector('header')) {
         
         document.querySelector('nav svg').addEventListener('click', navClick, false)
-        userGroupFunc()
+        // userGroupFunc()
         headerScrl()
     }
 })
